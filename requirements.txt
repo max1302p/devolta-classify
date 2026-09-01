@@ -1,0 +1,9 @@
+# CPU only. The Dockerfile installs torch from the CPU index first:
+#   pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0
+# so no CUDA wheels (~2 GB) end up in the image.
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+transformers==4.57.6
+torch==2.8.0
+sentencepiece==0.2.2
