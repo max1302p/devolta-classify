@@ -6,13 +6,20 @@ import logging
 from contextlib import asynccontextmanager
 from typing import Optional
 
-from fastapi import Depends, FastAPI, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.concurrency import run_in_threadpool
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from .classifier import ModelNotLoadedError, Prediction, classifier
 from .config import Settings, get_settings
-from .schemas import ClassifyRequest, ClassifyResponse, HealthResponse, LabelScore
+from .schemas import (
+    ClassifyRequest,
+    ClassifyResponse,
+    ErrorResponse,
+    HealthResponse,
+    LabelScore,
+)
 
 logger = logging.getLogger("classify.api")
 
@@ -40,9 +47,50 @@ app = FastAPI(
         "Zero-shot classification of German and English text using "
         "bge-m3-zeroshot-v2.0 on CPU."
     ),
-    version="0.1.0",
+    version="1.0.0",
     lifespan=lifespan,
+    responses={
+        422: {"model": ErrorResponse},
+        503: {"model": ErrorResponse},
+    },
 )
+
+
+# --------------------------------------------------------------------------- #
+# Error handling: every failure comes back as {"error": "..."}
+# --------------------------------------------------------------------------- #
+@app.exception_handler(RequestValidationError)
+async def _validation_error_handler(request: Request, exc: RequestValidationError):
+    parts = []
+    for err in exc.errors():
+        location = ".".join(str(part) for part in err.get("loc", ()) if part != "body")
+        message = err.get("msg", "invalid value")
+        # Pydantic prefixes custom validators with "Value error, " - just noise.
+        for prefix in ("Value error, ", "Assertion failed, "):
+            if message.startswith(prefix):
+                message = message[len(prefix):]
+        parts.append(f"{location}: {message}" if location else message)
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={"error": "; ".join(parts) or "invalid request"},
+    )
+
+
+@app.exception_handler(HTTPException)
+async def _http_error_handler(request: Request, exc: HTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"error": str(exc.detail)},
+        headers=getattr(exc, "headers", None),
+    )
+
+
+@app.exception_handler(ModelNotLoadedError)
+async def _model_not_loaded_handler(request: Request, exc: ModelNotLoadedError):
+    return JSONResponse(
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        content={"error": "model is not loaded yet"},
+    )
 
 
 # --------------------------------------------------------------------------- #
