@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from functools import lru_cache
+from typing import Tuple
 
 # Multilingual NLI model, works on German and English. Swappable via MODEL_ID,
 # but the chosen model has to be baked into the image at build time.
@@ -32,16 +33,18 @@ def _int_env(name: str, default: int, minimum: int = 1) -> int:
     return value
 
 
-def _api_key_from_env() -> str:
-    key = os.environ.get("API_KEY", "")
-    if not key.strip():
-        raise ConfigError("API_KEY is not set - refusing to start.")
-    return key
+def _api_keys_from_env() -> Tuple[str, ...]:
+    """API_KEYS (comma separated) wins; API_KEY stays valid as a single value."""
+    raw = os.environ.get("API_KEYS") or os.environ.get("API_KEY") or ""
+    keys = tuple(key.strip() for key in raw.split(",") if key.strip())
+    if not keys:
+        raise ConfigError("API_KEYS (or API_KEY) is not set - refusing to start.")
+    return keys
 
 
 @dataclass(frozen=True)
 class Settings:
-    api_key: str
+    api_keys: Tuple[str, ...]
     num_threads: int
     max_concurrency: int
     default_hypothesis_template: str
@@ -55,7 +58,7 @@ class Settings:
             raise ConfigError("DEFAULT_HYPOTHESIS_TEMPLATE must contain '{}'.")
 
         return cls(
-            api_key=_api_key_from_env(),
+            api_keys=_api_keys_from_env(),
             num_threads=_int_env("NUM_THREADS", os.cpu_count() or 1),
             max_concurrency=_int_env("MAX_CONCURRENCY", 2),
             default_hypothesis_template=template,

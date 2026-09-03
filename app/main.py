@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import logging
+import secrets
 from contextlib import asynccontextmanager
 from typing import Optional
 
-from fastapi import Depends, FastAPI, HTTPException, Request, status
+from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 from fastapi.concurrency import run_in_threadpool
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -50,6 +51,7 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
     responses={
+        401: {"model": ErrorResponse},
         422: {"model": ErrorResponse},
         503: {"model": ErrorResponse},
     },
@@ -94,6 +96,36 @@ async def _model_not_loaded_handler(request: Request, exc: ModelNotLoadedError):
 
 
 # --------------------------------------------------------------------------- #
+# Auth
+# --------------------------------------------------------------------------- #
+def _extract_key(authorization: Optional[str], x_api_key: Optional[str]) -> str:
+    """Prefers 'Authorization: Bearer <key>', accepts 'X-API-Key: <key>'."""
+    if authorization:
+        scheme, _, value = authorization.partition(" ")
+        if scheme.lower() == "bearer" and value.strip():
+            return value.strip()
+    return (x_api_key or "").strip()
+
+
+async def require_api_key(
+    authorization: Optional[str] = Header(default=None, alias="Authorization"),
+    x_api_key: Optional[str] = Header(default=None, alias="X-API-Key"),
+    settings: Settings = Depends(get_settings),
+) -> None:
+    provided = _extract_key(authorization, x_api_key).encode("utf-8")
+    # Compare against every key without an early exit, to keep the timing flat.
+    matched = False
+    for key in settings.api_keys:
+        matched |= secrets.compare_digest(provided, key.encode("utf-8"))
+    if not provided or not matched:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="invalid or missing API key",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+
+# --------------------------------------------------------------------------- #
 # Routes
 # --------------------------------------------------------------------------- #
 @app.get("/health", response_model=HealthResponse, tags=["ops"])
@@ -108,6 +140,7 @@ async def health() -> JSONResponse:
 @app.post(
     "/classify",
     response_model=ClassifyResponse,
+    dependencies=[Depends(require_api_key)],
     tags=["classify"],
 )
 async def classify(
