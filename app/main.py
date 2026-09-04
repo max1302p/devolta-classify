@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import secrets
 from contextlib import asynccontextmanager
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 from fastapi.concurrency import run_in_threadpool
@@ -15,6 +15,8 @@ from fastapi.responses import JSONResponse
 from .classifier import ModelNotLoadedError, Prediction, classifier
 from .config import Settings, get_settings
 from .schemas import (
+    BatchRequest,
+    BatchResponse,
     ClassifyRequest,
     ClassifyResponse,
     ErrorResponse,
@@ -159,6 +161,39 @@ async def classify(
     )
 
     return _to_response(prediction, payload.multi_label, settings)
+
+
+@app.post(
+    "/classify/batch",
+    response_model=BatchResponse,
+    dependencies=[Depends(require_api_key)],
+    tags=["classify"],
+)
+async def classify_batch(
+    payload: BatchRequest,
+    settings: Settings = Depends(get_settings),
+) -> BatchResponse:
+    _ensure_loaded()
+    items = [
+        {
+            "text": item.text,
+            "labels": item.labels,
+            "multi_label": item.multi_label,
+            "hypothesis_template": item.template(settings.default_hypothesis_template),
+        }
+        for item in payload.items
+    ]
+
+    predictions: List[Prediction] = await run_in_threadpool(
+        classifier.classify_batch, items
+    )
+
+    return BatchResponse(
+        results=[
+            _to_response(prediction, item.multi_label, settings)
+            for prediction, item in zip(predictions, payload.items)
+        ]
+    )
 
 
 # --------------------------------------------------------------------------- #

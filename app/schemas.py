@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 MAX_LABELS = 50
 MIN_LABELS = 2
 MAX_TEXT_LEN = 5000
+MAX_BATCH_ITEMS = 32
 
 
 class ClassifyRequest(BaseModel):
@@ -74,6 +75,17 @@ class ClassifyRequest(BaseModel):
         return self.hypothesis_template or default
 
 
+class BatchRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    items: List[ClassifyRequest] = Field(
+        ...,
+        min_length=1,
+        max_length=MAX_BATCH_ITEMS,
+        description=f"1-{MAX_BATCH_ITEMS} items.",
+    )
+
+
 class LabelScore(BaseModel):
     label: str
     score: float
@@ -86,6 +98,10 @@ class ClassifyResponse(BaseModel):
     multi_label: bool
     model: str
     duration_ms: int
+
+
+class BatchResponse(BaseModel):
+    results: List[ClassifyResponse]
 
 
 class HealthResponse(BaseModel):

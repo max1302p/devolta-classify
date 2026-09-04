@@ -6,7 +6,7 @@ import contextlib
 import logging
 import time
 from dataclasses import dataclass
-from typing import Callable, ContextManager, List, Sequence, Tuple
+from typing import Callable, ContextManager, Iterable, List, Sequence, Tuple
 
 from .config import MODEL_ID, Settings
 
@@ -94,6 +94,18 @@ class Classifier:
             )
         duration_ms = int(round((time.perf_counter() - started) * 1000))
         return Prediction(results=_to_sorted_results(raw), duration_ms=duration_ms)
+
+    def classify_batch(self, items: Iterable[dict]) -> List[Prediction]:
+        """Classify items sequentially inside the same worker thread."""
+        return [
+            self.classify(
+                text=item["text"],
+                labels=item["labels"],
+                multi_label=item["multi_label"],
+                hypothesis_template=item["hypothesis_template"],
+            )
+            for item in items
+        ]
 
 
 def _to_sorted_results(raw: dict) -> List[Tuple[str, float]]:
