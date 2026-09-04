@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import secrets
 from contextlib import asynccontextmanager
@@ -26,15 +27,23 @@ from .schemas import (
 
 logger = logging.getLogger("classify.api")
 
+# Set during the lifespan; caps concurrent inferences (MAX_CONCURRENCY).
+_inference_semaphore: Optional[asyncio.Semaphore] = None
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     settings = get_settings()  # raises ConfigError when API_KEYS is missing
+
+    global _inference_semaphore
+    _inference_semaphore = asyncio.Semaphore(settings.max_concurrency)
 
     logger.info(
         "startup",
         extra={
             "model": settings.model_id,
             "num_threads": settings.num_threads,
+            "max_concurrency": settings.max_concurrency,
         },
     )
     await run_in_threadpool(classifier.load, settings)
@@ -152,13 +161,14 @@ async def classify(
     _ensure_loaded()
     template = payload.template(settings.default_hypothesis_template)
 
-    prediction = await run_in_threadpool(
-        classifier.classify,
-        payload.text,
-        payload.labels,
-        payload.multi_label,
-        template,
-    )
+    async with _semaphore():
+        prediction = await run_in_threadpool(
+            classifier.classify,
+            payload.text,
+            payload.labels,
+            payload.multi_label,
+            template,
+        )
 
     return _to_response(prediction, payload.multi_label, settings)
 
@@ -184,9 +194,10 @@ async def classify_batch(
         for item in payload.items
     ]
 
-    predictions: List[Prediction] = await run_in_threadpool(
-        classifier.classify_batch, items
-    )
+    async with _semaphore():
+        predictions: List[Prediction] = await run_in_threadpool(
+            classifier.classify_batch, items
+        )
 
     return BatchResponse(
         results=[
@@ -199,6 +210,15 @@ async def classify_batch(
 # --------------------------------------------------------------------------- #
 # Helpers
 # --------------------------------------------------------------------------- #
+def _semaphore() -> asyncio.Semaphore:
+    if _inference_semaphore is None:  # pragma: no cover - only outside the lifespan
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="service is still starting",
+        )
+    return _inference_semaphore
+
+
 def _ensure_loaded() -> None:
     if not classifier.is_loaded:
         raise ModelNotLoadedError("model is not loaded")

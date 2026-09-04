@@ -52,6 +52,12 @@ class Classifier:
 
         self.model_id = settings.model_id or self.model_id
         torch.set_num_threads(settings.num_threads)
+        try:
+            # A single inter-op thread keeps the thread pools from
+            # oversubscribing the CPU and starving everything else on the host.
+            torch.set_num_interop_threads(1)
+        except RuntimeError:  # already initialised, not critical
+            pass
         self._inference_ctx = torch.inference_mode
         started = time.perf_counter()
         self._pipe = self._build_pipeline()
