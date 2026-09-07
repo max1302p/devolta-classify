@@ -15,6 +15,7 @@ from fastapi.responses import JSONResponse
 
 from .classifier import ModelNotLoadedError, Prediction, classifier
 from .config import Settings, get_settings
+from .logging_config import configure_logging
 from .schemas import (
     BatchRequest,
     BatchResponse,
@@ -34,6 +35,7 @@ _inference_semaphore: Optional[asyncio.Semaphore] = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     settings = get_settings()  # raises ConfigError when API_KEYS is missing
+    configure_logging()
 
     global _inference_semaphore
     _inference_semaphore = asyncio.Semaphore(settings.max_concurrency)
@@ -170,7 +172,9 @@ async def classify(
             template,
         )
 
-    return _to_response(prediction, payload.multi_label, settings)
+    response = _to_response(prediction, payload.multi_label, settings)
+    _log_result("classify", response, len(payload.labels))
+    return response
 
 
 @app.post(
@@ -199,12 +203,13 @@ async def classify_batch(
             classifier.classify_batch, items
         )
 
-    return BatchResponse(
-        results=[
-            _to_response(prediction, item.multi_label, settings)
-            for prediction, item in zip(predictions, payload.items)
-        ]
-    )
+    responses = [
+        _to_response(prediction, item.multi_label, settings)
+        for prediction, item in zip(predictions, payload.items)
+    ]
+    for response, item in zip(responses, payload.items):
+        _log_result("classify_batch", response, len(item.labels))
+    return BatchResponse(results=responses)
 
 
 # --------------------------------------------------------------------------- #
@@ -235,4 +240,18 @@ def _to_response(
         multi_label=multi_label,
         model=settings.model_id,
         duration_ms=prediction.duration_ms,
+    )
+
+
+def _log_result(event: str, response: ClassifyResponse, n_labels: int) -> None:
+    """Logs metrics only - never the text itself."""
+    logger.info(
+        event,
+        extra={
+            "duration_ms": response.duration_ms,
+            "n_labels": n_labels,
+            "top_label": response.label,
+            "score": response.score,
+            "multi_label": response.multi_label,
+        },
     )
