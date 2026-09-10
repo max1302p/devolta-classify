@@ -1,0 +1,60 @@
+services:
+  classify:
+    build:
+      context: .
+      target: runtime
+      args:
+        MODEL_ID: ${MODEL_ID:-MoritzLaurer/bge-m3-zeroshot-v2.0}
+    image: classify:latest
+    restart: unless-stopped
+
+    environment:
+      # Required - without keys the service refuses to start.
+      API_KEYS: ${API_KEYS:?API_KEYS must be set (comma separated)}
+
+      # CPU budget, deliberately small so other services on the host keep room.
+      NUM_THREADS: ${NUM_THREADS:-2}
+      OMP_NUM_THREADS: ${OMP_NUM_THREADS:-2}
+      MKL_NUM_THREADS: ${MKL_NUM_THREADS:-2}
+      MAX_CONCURRENCY: ${MAX_CONCURRENCY:-2}
+
+      DEFAULT_HYPOTHESIS_TEMPLATE: ${DEFAULT_HYPOTHESIS_TEMPLATE:-Diese Nachricht betrifft {}.}
+      MODEL_ID: ${MODEL_ID:-MoritzLaurer/bge-m3-zeroshot-v2.0}
+      PORT: 8000
+
+    # A reverse proxy reaches the container over the internal network.
+    expose:
+      - "8000"
+
+    # Local testing only. Remove this when a reverse proxy is in front, so the
+    # port is not exposed on the host.
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+
+    deploy:
+      resources:
+        limits:
+          # Hard ceiling: the container cannot starve the host.
+          cpus: "${CPU_LIMIT:-2.0}"
+          memory: ${MEMORY_LIMIT:-4g}
+        reservations:
+          memory: 2g
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=5).read()
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+
+    stop_grace_period: 30s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
