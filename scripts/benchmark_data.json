@@ -1,0 +1,821 @@
+{
+  "global_template": "Diese Nachricht betrifft {}.",
+  "domains": [
+    {
+      "name": "support_ticket",
+      "labels": [
+        "Technisches Problem",
+        "Rechnung",
+        "Feature-Wunsch",
+        "Spam"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "specific": "In dieser Kundennachricht geht es um {}.",
+        "category": "Diese Kundennachricht gehoert in die Kategorie {}."
+      },
+      "cases": [
+        {
+          "text": "Mein Kassensystem druckt seit gestern keine Bons mehr",
+          "gold": "Technisches Problem"
+        },
+        {
+          "text": "Die App stürzt beim Login jedes Mal ab.",
+          "gold": "Technisches Problem"
+        },
+        {
+          "text": "Seit dem Update lädt die Kundenliste nicht mehr.",
+          "gold": "Technisches Problem"
+        },
+        {
+          "text": "Das Terminal zeigt nur noch einen schwarzen Bildschirm.",
+          "gold": "Technisches Problem"
+        },
+        {
+          "text": "Auf der letzten Rechnung wurde mir ein falscher Betrag berechnet.",
+          "gold": "Rechnung"
+        },
+        {
+          "text": "Warum wurde mein Konto diesen Monat zweimal belastet?",
+          "gold": "Rechnung"
+        },
+        {
+          "text": "Bitte schickt mir die Rechnung von Mai noch einmal zu.",
+          "gold": "Rechnung"
+        },
+        {
+          "text": "Könnt ihr einen Dark Mode für das Dashboard einbauen?",
+          "gold": "Feature-Wunsch"
+        },
+        {
+          "text": "Es wäre super, wenn man Berichte als CSV exportieren könnte.",
+          "gold": "Feature-Wunsch"
+        },
+        {
+          "text": "Bitte fügt eine Suchfunktion für alte Belege hinzu.",
+          "gold": "Feature-Wunsch"
+        },
+        {
+          "text": "GRATIS BITCOIN!!! Klicken Sie hier und verdienen Sie 5000 Euro pro Tag",
+          "gold": "Spam"
+        },
+        {
+          "text": "Herzlichen Glückwunsch, Sie haben ein iPhone gewonnen! Jetzt Daten eingeben.",
+          "gold": "Spam"
+        }
+      ]
+    },
+    {
+      "name": "sentiment",
+      "labels": [
+        "positiv",
+        "negativ",
+        "neutral"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "mood": "Die Stimmung dieses Textes ist {}.",
+        "is": "Dieser Text ist {}."
+      },
+      "cases": [
+        {
+          "text": "Das Hotel war fantastisch, wir kommen definitiv wieder!",
+          "gold": "positiv"
+        },
+        {
+          "text": "Bin total begeistert vom neuen Laptop, läuft blitzschnell.",
+          "gold": "positiv"
+        },
+        {
+          "text": "Der Service war herzlich und das Essen hervorragend.",
+          "gold": "positiv"
+        },
+        {
+          "text": "Die Lieferung kam zwei Wochen zu spät und der Karton war eingedrückt.",
+          "gold": "negativ"
+        },
+        {
+          "text": "Nie wieder. Das Gerät war nach drei Tagen kaputt.",
+          "gold": "negativ"
+        },
+        {
+          "text": "Teuer, laut und völlig überbewertet.",
+          "gold": "negativ"
+        },
+        {
+          "text": "Das Paket wurde heute um 14 Uhr zugestellt.",
+          "gold": "neutral"
+        },
+        {
+          "text": "Die Sitzung beginnt am Dienstag um 9 Uhr in Raum 3.",
+          "gold": "neutral"
+        },
+        {
+          "text": "Das Produkt wiegt 1,2 Kilogramm und ist in drei Farben erhältlich.",
+          "gold": "neutral"
+        },
+        {
+          "text": "Der Vertrag läuft über 24 Monate und verlängert sich automatisch.",
+          "gold": "neutral"
+        }
+      ]
+    },
+    {
+      "name": "news_section",
+      "labels": [
+        "Politik",
+        "Sport",
+        "Wirtschaft",
+        "Kultur",
+        "Wissenschaft",
+        "Technologie"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "about": "In dieser Nachricht geht es um {}.",
+        "section": "Dieser Zeitungsartikel gehoert ins Ressort {}."
+      },
+      "cases": [
+        {
+          "text": "Der Bundestag hat gestern über den Haushaltsentwurf für das kommende Jahr abgestimmt.",
+          "gold": "Politik"
+        },
+        {
+          "text": "Die Koalition streitet weiter über die Reform des Wahlrechts.",
+          "gold": "Politik"
+        },
+        {
+          "text": "Bayern München gewann das Spiel in der Nachspielzeit mit 2:1.",
+          "gold": "Sport"
+        },
+        {
+          "text": "Die Schwimmerin verbesserte ihren eigenen Weltrekord um zwei Zehntelsekunden.",
+          "gold": "Sport"
+        },
+        {
+          "text": "Der Dax schloss am Freitag ein Prozent im Minus.",
+          "gold": "Wirtschaft"
+        },
+        {
+          "text": "Der Konzern übernimmt für vier Milliarden Euro einen Wettbewerber.",
+          "gold": "Wirtschaft"
+        },
+        {
+          "text": "Die Ausstellung zeigt erstmals Skizzen des Malers aus dessen Frühwerk.",
+          "gold": "Kultur"
+        },
+        {
+          "text": "Der Roman gewann den wichtigsten deutschen Literaturpreis.",
+          "gold": "Kultur"
+        },
+        {
+          "text": "Forscher haben einen Exoplaneten mit möglicher Wasseratmosphäre entdeckt.",
+          "gold": "Wissenschaft"
+        },
+        {
+          "text": "Eine Studie zeigt, dass Korallenriffe schneller bleichen als bisher angenommen.",
+          "gold": "Wissenschaft"
+        },
+        {
+          "text": "Das Unternehmen stellte ein Smartphone mit faltbarem Display vor.",
+          "gold": "Technologie"
+        },
+        {
+          "text": "Die neue Chip-Generation rechnet doppelt so schnell bei halbem Stromverbrauch.",
+          "gold": "Technologie"
+        }
+      ]
+    },
+    {
+      "name": "email_triage",
+      "labels": [
+        "Bewerbung",
+        "Angebot",
+        "Terminanfrage",
+        "Newsletter",
+        "Rechnung"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "email": "In dieser E-Mail geht es um {}.",
+        "folder": "Diese E-Mail gehoert in den Ordner {}."
+      },
+      "cases": [
+        {
+          "text": "Hiermit bewerbe ich mich auf die ausgeschriebene Stelle als Fachinformatiker.",
+          "gold": "Bewerbung"
+        },
+        {
+          "text": "Anbei finden Sie meinen Lebenslauf und meine Zeugnisse.",
+          "gold": "Bewerbung"
+        },
+        {
+          "text": "Gerne unterbreiten wir Ihnen ein Angebot über 20 Bürostühle zum Stückpreis von 149 Euro.",
+          "gold": "Angebot"
+        },
+        {
+          "text": "Als Ihr Partner für Büromaterial können wir Ihnen ab sofort 15 Prozent Rabatt einräumen.",
+          "gold": "Angebot"
+        },
+        {
+          "text": "Hätten Sie kommende Woche Dienstag oder Mittwoch Zeit für ein kurzes Gespräch?",
+          "gold": "Terminanfrage"
+        },
+        {
+          "text": "Ich würde gern einen Termin zur Besichtigung vereinbaren.",
+          "gold": "Terminanfrage"
+        },
+        {
+          "text": "Unser Monatsrückblick: die fünf wichtigsten Neuerungen im Oktober.",
+          "gold": "Newsletter"
+        },
+        {
+          "text": "Sie erhalten diese E-Mail, weil Sie unseren wöchentlichen Verteiler abonniert haben.",
+          "gold": "Newsletter"
+        },
+        {
+          "text": "Anbei die Rechnung Nr. 2024-0815 über 1.190 Euro, zahlbar innerhalb von 14 Tagen.",
+          "gold": "Rechnung"
+        },
+        {
+          "text": "Wir bitten um Ausgleich des offenen Betrags von 340 Euro bis zum 30. Juni.",
+          "gold": "Rechnung"
+        }
+      ]
+    },
+    {
+      "name": "intent_noun_labels",
+      "labels": [
+        "Stornierung",
+        "Lieferstatus",
+        "Adressänderung",
+        "Rücksendung",
+        "Produktberatung"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "request": "Bei diesem Kundenanliegen geht es um {}."
+      },
+      "cases": [
+        {
+          "text": "Ich möchte meine gestern aufgegebene Bestellung wieder stornieren.",
+          "gold": "Stornierung"
+        },
+        {
+          "text": "Bitte brechen Sie die Bestellung 4711 ab, ich habe mich vertan.",
+          "gold": "Stornierung"
+        },
+        {
+          "text": "Wo bleibt mein Paket? Bestellt habe ich vor zehn Tagen.",
+          "gold": "Lieferstatus"
+        },
+        {
+          "text": "Können Sie mir sagen, wann die Lieferung ankommt?",
+          "gold": "Lieferstatus"
+        },
+        {
+          "text": "Ich bin umgezogen, bitte liefern Sie an die neue Anschrift.",
+          "gold": "Adressänderung"
+        },
+        {
+          "text": "Die Ware soll bitte an meine Arbeitsadresse statt nach Hause gehen.",
+          "gold": "Adressänderung"
+        },
+        {
+          "text": "Die Hose passt nicht, wie schicke ich sie zurück?",
+          "gold": "Rücksendung"
+        },
+        {
+          "text": "Ich möchte den Artikel zurückgeben und mein Geld erstattet bekommen.",
+          "gold": "Rücksendung"
+        },
+        {
+          "text": "Welches der beiden Modelle eignet sich besser für einen Anfänger?",
+          "gold": "Produktberatung"
+        },
+        {
+          "text": "Passt dieser Akku auch in das ältere Gerät von 2019?",
+          "gold": "Produktberatung"
+        }
+      ]
+    },
+    {
+      "name": "intent_verb_labels",
+      "labels": [
+        "eine Bestellung stornieren",
+        "den Lieferstatus erfahren",
+        "die Lieferadresse ändern",
+        "einen Artikel zurücksenden",
+        "sich zu einem Produkt beraten lassen"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "wants": "Der Kunde möchte {}."
+      },
+      "cases": [
+        {
+          "text": "Ich möchte meine gestern aufgegebene Bestellung wieder stornieren.",
+          "gold": "eine Bestellung stornieren"
+        },
+        {
+          "text": "Bitte brechen Sie die Bestellung 4711 ab, ich habe mich vertan.",
+          "gold": "eine Bestellung stornieren"
+        },
+        {
+          "text": "Wo bleibt mein Paket? Bestellt habe ich vor zehn Tagen.",
+          "gold": "den Lieferstatus erfahren"
+        },
+        {
+          "text": "Können Sie mir sagen, wann die Lieferung ankommt?",
+          "gold": "den Lieferstatus erfahren"
+        },
+        {
+          "text": "Ich bin umgezogen, bitte liefern Sie an die neue Anschrift.",
+          "gold": "die Lieferadresse ändern"
+        },
+        {
+          "text": "Die Ware soll bitte an meine Arbeitsadresse statt nach Hause gehen.",
+          "gold": "die Lieferadresse ändern"
+        },
+        {
+          "text": "Die Hose passt nicht, wie schicke ich sie zurück?",
+          "gold": "einen Artikel zurücksenden"
+        },
+        {
+          "text": "Ich möchte den Artikel zurückgeben und mein Geld erstattet bekommen.",
+          "gold": "einen Artikel zurücksenden"
+        },
+        {
+          "text": "Welches der beiden Modelle eignet sich besser für einen Anfänger?",
+          "gold": "sich zu einem Produkt beraten lassen"
+        },
+        {
+          "text": "Passt dieser Akku auch in das ältere Gerät von 2019?",
+          "gold": "sich zu einem Produkt beraten lassen"
+        }
+      ]
+    },
+    {
+      "name": "urgency",
+      "labels": [
+        "dringend",
+        "nicht dringend"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "request": "Dieses Anliegen ist {}.",
+        "handling": "Die Bearbeitung dieses Anliegens ist {}."
+      },
+      "cases": [
+        {
+          "text": "Unser komplettes Kassensystem steht still, wir können seit einer Stunde nicht kassieren.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Die Produktion steht, bitte sofort zurückrufen!",
+          "gold": "dringend"
+        },
+        {
+          "text": "Server ist down, alle 40 Mitarbeiter können nicht arbeiten.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Wir haben einen Wasserschaden im Serverraum und brauchen sofort Hilfe.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Bei Gelegenheit hätte ich gern eine Übersicht der Vertragslaufzeiten.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Kein Stress, aber irgendwann nächste Woche wäre ein Update nett.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Ich wollte nur mal fragen, ob es die Schulung auch als Aufzeichnung gibt.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Für unsere Planung im nächsten Quartal bräuchten wir irgendwann die Zahlen.",
+          "gold": "nicht dringend"
+        }
+      ]
+    },
+    {
+      "name": "moderation",
+      "labels": [
+        "Beleidigung",
+        "Werbung",
+        "harmloser Beitrag",
+        "Drohung"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "comment": "Dieser Kommentar ist {}.",
+        "contains": "Dieser Kommentar enthaelt {}."
+      },
+      "cases": [
+        {
+          "text": "Du bist der dümmste Mensch, der je einen Kommentar geschrieben hat.",
+          "gold": "Beleidigung"
+        },
+        {
+          "text": "So ein Schwachkopf, hat überhaupt keine Ahnung wovon er redet.",
+          "gold": "Beleidigung"
+        },
+        {
+          "text": "Jetzt 50 Prozent Rabatt auf unsere Sonnenbrillen, Link in der Bio!",
+          "gold": "Werbung"
+        },
+        {
+          "text": "Verdiene 300 Euro am Tag von zu Hause, schreib mir einfach eine DM.",
+          "gold": "Werbung"
+        },
+        {
+          "text": "Schöner Beitrag, das sehe ich ganz genauso.",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Danke für die Erklärung, hat mir sehr geholfen.",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Weiß jemand, wann die nächste Folge erscheint?",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Ich weiß, wo du wohnst, und werde dir auflauern.",
+          "gold": "Drohung"
+        },
+        {
+          "text": "Pass bloß auf, dass dir nichts passiert, wenn du weiter so schreibst.",
+          "gold": "Drohung"
+        },
+        {
+          "text": "Wenn ich dich irgendwo sehe, wirst du das bereuen.",
+          "gold": "Drohung"
+        }
+      ]
+    },
+    {
+      "name": "formality",
+      "labels": [
+        "förmlich",
+        "umgangssprachlich"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "style": "Der Schreibstil dieses Textes ist {}.",
+        "phrased": "Dieser Text ist {} formuliert."
+      },
+      "cases": [
+        {
+          "text": "Sehr geehrte Damen und Herren, hiermit bestätige ich den Erhalt Ihres Schreibens.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Mit freundlichen Grüßen verbleibe ich, Ihr Dr. Meier.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Wir erlauben uns, Sie auf den noch ausstehenden Betrag hinzuweisen.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Bezugnehmend auf Ihr Schreiben vom 12. März teilen wir Ihnen Folgendes mit.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Hey, kannste mir das Ding mal rüberschicken?",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Moin, läuft bei dir? Meld dich mal.",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Das war voll der Reinfall, ey.",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Jo passt schon, mach ich morgen.",
+          "gold": "umgangssprachlich"
+        }
+      ]
+    },
+    {
+      "name": "job_ads",
+      "labels": [
+        "IT",
+        "Gastronomie",
+        "Pflege",
+        "Handwerk",
+        "Logistik"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "industry": "Diese Stellenanzeige gehoert in die Branche {}.",
+        "job": "In dieser Stellenanzeige geht es um einen Job in der Branche {}."
+      },
+      "cases": [
+        {
+          "text": "Wir suchen eine Fachkraft für die Betreuung unserer Kubernetes-Cluster.",
+          "gold": "IT"
+        },
+        {
+          "text": "Zur Verstärkung unseres Entwicklungsteams suchen wir eine Python-Entwicklerin.",
+          "gold": "IT"
+        },
+        {
+          "text": "Für unser Restaurant im Zentrum suchen wir eine Servicekraft für den Abenddienst.",
+          "gold": "Gastronomie"
+        },
+        {
+          "text": "Koch für die warme Küche gesucht, Erfahrung mit à la carte erwünscht.",
+          "gold": "Gastronomie"
+        },
+        {
+          "text": "Examinierte Altenpflegerin für unser Seniorenheim gesucht, Schichtdienst.",
+          "gold": "Pflege"
+        },
+        {
+          "text": "Wir suchen Pflegefachkräfte für die Intensivstation.",
+          "gold": "Pflege"
+        },
+        {
+          "text": "Elektriker für Installationen im Neubau gesucht, Führerschein erforderlich.",
+          "gold": "Handwerk"
+        },
+        {
+          "text": "Dachdecker mit abgeschlossener Ausbildung gesucht.",
+          "gold": "Handwerk"
+        },
+        {
+          "text": "Berufskraftfahrer für den Nahverkehr gesucht, CE-Führerschein Bedingung.",
+          "gold": "Logistik"
+        },
+        {
+          "text": "Für unser Lager suchen wir Kommissionierer im Zweischichtbetrieb.",
+          "gold": "Logistik"
+        }
+      ]
+    },
+    {
+      "name": "document_type",
+      "labels": [
+        "Mietvertrag",
+        "Kündigung",
+        "Mahnung",
+        "Datenschutzerklärung",
+        "Arbeitszeugnis"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "document": "Bei diesem Dokument handelt es sich um {}.",
+        "is": "Dieses Dokument ist {}."
+      },
+      "cases": [
+        {
+          "text": "Der Vermieter überlässt dem Mieter die Wohnung im ersten Obergeschoss ab dem 1. Juli.",
+          "gold": "Mietvertrag"
+        },
+        {
+          "text": "Die monatliche Kaltmiete beträgt 890 Euro zuzüglich Nebenkosten.",
+          "gold": "Mietvertrag"
+        },
+        {
+          "text": "Hiermit kündige ich das Arbeitsverhältnis fristgerecht zum 31. Dezember.",
+          "gold": "Kündigung"
+        },
+        {
+          "text": "Ich kündige meinen Vertrag zum nächstmöglichen Zeitpunkt.",
+          "gold": "Kündigung"
+        },
+        {
+          "text": "Trotz mehrfacher Aufforderung ist der Betrag von 450 Euro noch nicht eingegangen.",
+          "gold": "Mahnung"
+        },
+        {
+          "text": "Wir fordern Sie letztmalig auf, den offenen Betrag bis zum 15. zu begleichen.",
+          "gold": "Mahnung"
+        },
+        {
+          "text": "Wir verarbeiten Ihre personenbezogenen Daten auf Grundlage von Artikel 6 DSGVO.",
+          "gold": "Datenschutzerklärung"
+        },
+        {
+          "text": "Ihre Daten werden ausschließlich zur Vertragserfüllung gespeichert und nicht an Dritte weitergegeben.",
+          "gold": "Datenschutzerklärung"
+        },
+        {
+          "text": "Frau Schmidt erfüllte alle ihr übertragenen Aufgaben stets zu unserer vollsten Zufriedenheit.",
+          "gold": "Arbeitszeugnis"
+        },
+        {
+          "text": "Herr Weber verließ das Unternehmen auf eigenen Wunsch; wir wünschen ihm alles Gute.",
+          "gold": "Arbeitszeugnis"
+        }
+      ]
+    },
+    {
+      "name": "review_aspect",
+      "labels": [
+        "Lieferung",
+        "Preis",
+        "Qualität",
+        "Kundenservice"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "review": "In dieser Bewertung geht es um {}.",
+        "refers": "Diese Produktbewertung bezieht sich auf {}."
+      },
+      "cases": [
+        {
+          "text": "Das Paket kam schon am nächsten Morgen an, super schnell.",
+          "gold": "Lieferung"
+        },
+        {
+          "text": "Der Versand hat zwei Wochen gedauert, das ist deutlich zu lang.",
+          "gold": "Lieferung"
+        },
+        {
+          "text": "Für 19 Euro bekommt man hier wirklich viel geboten.",
+          "gold": "Preis"
+        },
+        {
+          "text": "Deutlich zu teuer für das, was man dafür bekommt.",
+          "gold": "Preis"
+        },
+        {
+          "text": "Der Stoff fühlt sich billig an und reißt schnell ein.",
+          "gold": "Qualität"
+        },
+        {
+          "text": "Sehr solide Verarbeitung, da wackelt nichts.",
+          "gold": "Qualität"
+        },
+        {
+          "text": "Nach drei Wäschen ist die Farbe komplett ausgeblichen.",
+          "gold": "Qualität"
+        },
+        {
+          "text": "Die Hotline war freundlich und hat mein Problem sofort gelöst.",
+          "gold": "Kundenservice"
+        },
+        {
+          "text": "Niemand geht ans Telefon, auf E-Mails wird nicht geantwortet.",
+          "gold": "Kundenservice"
+        },
+        {
+          "text": "Der Mitarbeiter im Chat war sehr geduldig und kompetent.",
+          "gold": "Kundenservice"
+        }
+      ]
+    },
+    {
+      "name": "english_tickets",
+      "labels": [
+        "technical issue",
+        "billing",
+        "feature request",
+        "spam"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "english": "This text is about {}.",
+        "message": "This customer message is about {}."
+      },
+      "cases": [
+        {
+          "text": "The receipt printer stopped working after the last update.",
+          "gold": "technical issue"
+        },
+        {
+          "text": "The app crashes every time I open the reports tab.",
+          "gold": "technical issue"
+        },
+        {
+          "text": "My account was charged twice this month.",
+          "gold": "billing"
+        },
+        {
+          "text": "Please send me the invoice for May again.",
+          "gold": "billing"
+        },
+        {
+          "text": "Could you please add a dark mode to the dashboard?",
+          "gold": "feature request"
+        },
+        {
+          "text": "It would be great if we could export reports as CSV.",
+          "gold": "feature request"
+        },
+        {
+          "text": "CONGRATULATIONS! You won a free iPhone, click here now!",
+          "gold": "spam"
+        },
+        {
+          "text": "Earn 5000 dollars a day working from home, just send me a DM!",
+          "gold": "spam"
+        }
+      ]
+    },
+    {
+      "name": "cuisine",
+      "labels": [
+        "Italien",
+        "Japan",
+        "Mexiko",
+        "Deutschland",
+        "Indien"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "origin": "Dieses Gericht stammt aus {}.",
+        "kueche": "Dieses Rezept gehoert zur Kueche von {}."
+      },
+      "cases": [
+        {
+          "text": "Spaghetti mit Tomaten, Basilikum und Parmesan, dazu ein Schuss Olivenöl.",
+          "gold": "Italien"
+        },
+        {
+          "text": "Den Pizzateig 24 Stunden gehen lassen, dann mit Mozzarella belegen.",
+          "gold": "Italien"
+        },
+        {
+          "text": "Sushi-Reis mit Reisessig würzen und mit rohem Lachs und Nori servieren.",
+          "gold": "Japan"
+        },
+        {
+          "text": "Miso-Suppe mit Dashi, Tofu und Frühlingszwiebeln.",
+          "gold": "Japan"
+        },
+        {
+          "text": "Tortillas mit schwarzen Bohnen, Guacamole und Jalapeños füllen.",
+          "gold": "Mexiko"
+        },
+        {
+          "text": "Schweinebraten mit Kartoffelknödeln und Blaukraut.",
+          "gold": "Deutschland"
+        },
+        {
+          "text": "Linsensuppe mit Mettwürstchen und einem Schuss Essig abschmecken.",
+          "gold": "Deutschland"
+        },
+        {
+          "text": "Hähnchen in Joghurt-Marinade mit Garam Masala und Kurkuma schmoren.",
+          "gold": "Indien"
+        }
+      ]
+    },
+    {
+      "name": "medical_triage",
+      "labels": [
+        "Notfall",
+        "Arzttermin",
+        "Selbstbehandlung"
+      ],
+      "templates": {
+        "global": "Diese Nachricht betrifft {}.",
+        "case": "Dieser Fall erfordert {}.",
+        "symptoms": "Bei diesen Beschwerden ist das Richtige {}."
+      },
+      "cases": [
+        {
+          "text": "Plötzlich starke Brustschmerzen, die in den linken Arm ausstrahlen, dazu Atemnot.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Die Person ist bewusstlos und atmet nicht mehr.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Starke Blutung nach einem Sturz, die nicht aufhören will.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Seit drei Wochen wiederkehrende Kopfschmerzen, die nicht besser werden.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Ein Muttermal hat sich in den letzten Monaten verändert und ist größer geworden.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Seit zwei Monaten Schmerzen im Knie beim Treppensteigen.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Leichter Schnupfen seit gestern, kein Fieber.",
+          "gold": "Selbstbehandlung"
+        },
+        {
+          "text": "Ein kleiner Mückenstich, der etwas juckt.",
+          "gold": "Selbstbehandlung"
+        }
+      ]
+    }
+  ]
+}

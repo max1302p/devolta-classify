@@ -1,0 +1,473 @@
+{
+  "global_template": "Diese Nachricht betrifft {}.",
+  "domains": [
+    {
+      "name": "formality_short",
+      "labels": [
+        "förmlich",
+        "umgangssprachlich"
+      ],
+      "templates": {
+        "variant": "Der Schreibstil dieses Textes ist {}."
+      },
+      "cases": [
+        {
+          "text": "Sehr geehrte Damen und Herren, hiermit bestätige ich den Erhalt Ihres Schreibens.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Mit freundlichen Grüßen verbleibe ich, Ihr Dr. Meier.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Wir erlauben uns, Sie auf den noch ausstehenden Betrag hinzuweisen.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Bezugnehmend auf Ihr Schreiben vom 12. März teilen wir Ihnen Folgendes mit.",
+          "gold": "förmlich"
+        },
+        {
+          "text": "Hey, kannste mir das Ding mal rüberschicken?",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Moin, läuft bei dir? Meld dich mal.",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Das war voll der Reinfall, ey.",
+          "gold": "umgangssprachlich"
+        },
+        {
+          "text": "Jo passt schon, mach ich morgen.",
+          "gold": "umgangssprachlich"
+        }
+      ]
+    },
+    {
+      "name": "formality_descriptive",
+      "labels": [
+        "förmlich und sachlich, wie in einem Geschäftsbrief",
+        "locker und salopp, wie eine Nachricht unter Freunden"
+      ],
+      "templates": {
+        "variant": "Dieser Text ist {}."
+      },
+      "cases": [
+        {
+          "text": "Sehr geehrte Damen und Herren, hiermit bestätige ich den Erhalt Ihres Schreibens.",
+          "gold": "förmlich und sachlich, wie in einem Geschäftsbrief"
+        },
+        {
+          "text": "Mit freundlichen Grüßen verbleibe ich, Ihr Dr. Meier.",
+          "gold": "förmlich und sachlich, wie in einem Geschäftsbrief"
+        },
+        {
+          "text": "Wir erlauben uns, Sie auf den noch ausstehenden Betrag hinzuweisen.",
+          "gold": "förmlich und sachlich, wie in einem Geschäftsbrief"
+        },
+        {
+          "text": "Bezugnehmend auf Ihr Schreiben vom 12. März teilen wir Ihnen Folgendes mit.",
+          "gold": "förmlich und sachlich, wie in einem Geschäftsbrief"
+        },
+        {
+          "text": "Hey, kannste mir das Ding mal rüberschicken?",
+          "gold": "locker und salopp, wie eine Nachricht unter Freunden"
+        },
+        {
+          "text": "Moin, läuft bei dir? Meld dich mal.",
+          "gold": "locker und salopp, wie eine Nachricht unter Freunden"
+        },
+        {
+          "text": "Das war voll der Reinfall, ey.",
+          "gold": "locker und salopp, wie eine Nachricht unter Freunden"
+        },
+        {
+          "text": "Jo passt schon, mach ich morgen.",
+          "gold": "locker und salopp, wie eine Nachricht unter Freunden"
+        }
+      ]
+    },
+    {
+      "name": "medical_short",
+      "labels": [
+        "Notfall",
+        "Arzttermin",
+        "Selbstbehandlung"
+      ],
+      "templates": {
+        "variant": "Dieser Fall erfordert {}."
+      },
+      "cases": [
+        {
+          "text": "Plötzlich starke Brustschmerzen, die in den linken Arm ausstrahlen, dazu Atemnot.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Die Person ist bewusstlos und atmet nicht mehr.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Starke Blutung nach einem Sturz, die nicht aufhören will.",
+          "gold": "Notfall"
+        },
+        {
+          "text": "Seit drei Wochen wiederkehrende Kopfschmerzen, die nicht besser werden.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Ein Muttermal hat sich in den letzten Monaten verändert und ist größer geworden.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Seit zwei Monaten Schmerzen im Knie beim Treppensteigen.",
+          "gold": "Arzttermin"
+        },
+        {
+          "text": "Leichter Schnupfen seit gestern, kein Fieber.",
+          "gold": "Selbstbehandlung"
+        },
+        {
+          "text": "Ein kleiner Mückenstich, der etwas juckt.",
+          "gold": "Selbstbehandlung"
+        }
+      ]
+    },
+    {
+      "name": "medical_descriptive",
+      "labels": [
+        "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+        "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte",
+        "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann"
+      ],
+      "templates": {
+        "variant": "Es geht um {}."
+      },
+      "cases": [
+        {
+          "text": "Plötzlich starke Brustschmerzen, die in den linken Arm ausstrahlen, dazu Atemnot.",
+          "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss"
+        },
+        {
+          "text": "Die Person ist bewusstlos und atmet nicht mehr.",
+          "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss"
+        },
+        {
+          "text": "Starke Blutung nach einem Sturz, die nicht aufhören will.",
+          "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss"
+        },
+        {
+          "text": "Seit drei Wochen wiederkehrende Kopfschmerzen, die nicht besser werden.",
+          "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte"
+        },
+        {
+          "text": "Ein Muttermal hat sich in den letzten Monaten verändert und ist größer geworden.",
+          "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte"
+        },
+        {
+          "text": "Seit zwei Monaten Schmerzen im Knie beim Treppensteigen.",
+          "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte"
+        },
+        {
+          "text": "Leichter Schnupfen seit gestern, kein Fieber.",
+          "gold": "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann"
+        },
+        {
+          "text": "Ein kleiner Mückenstich, der etwas juckt.",
+          "gold": "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann"
+        }
+      ]
+    },
+    {
+      "name": "urgency_short",
+      "labels": [
+        "dringend",
+        "nicht dringend"
+      ],
+      "templates": {
+        "variant": "Dieses Anliegen ist {}."
+      },
+      "cases": [
+        {
+          "text": "Unser komplettes Kassensystem steht still, wir können seit einer Stunde nicht kassieren.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Die Produktion steht, bitte sofort zurückrufen!",
+          "gold": "dringend"
+        },
+        {
+          "text": "Server ist down, alle 40 Mitarbeiter können nicht arbeiten.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Wir haben einen Wasserschaden im Serverraum und brauchen sofort Hilfe.",
+          "gold": "dringend"
+        },
+        {
+          "text": "Bei Gelegenheit hätte ich gern eine Übersicht der Vertragslaufzeiten.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Kein Stress, aber irgendwann nächste Woche wäre ein Update nett.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Ich wollte nur mal fragen, ob es die Schulung auch als Aufzeichnung gibt.",
+          "gold": "nicht dringend"
+        },
+        {
+          "text": "Für unsere Planung im nächsten Quartal bräuchten wir irgendwann die Zahlen.",
+          "gold": "nicht dringend"
+        }
+      ]
+    },
+    {
+      "name": "urgency_descriptive",
+      "labels": [
+        "ein Notfall, der sofort bearbeitet werden muss",
+        "eine Anfrage, die auch nächste Woche noch Zeit hat"
+      ],
+      "templates": {
+        "variant": "Es handelt sich um {}."
+      },
+      "cases": [
+        {
+          "text": "Unser komplettes Kassensystem steht still, wir können seit einer Stunde nicht kassieren.",
+          "gold": "ein Notfall, der sofort bearbeitet werden muss"
+        },
+        {
+          "text": "Die Produktion steht, bitte sofort zurückrufen!",
+          "gold": "ein Notfall, der sofort bearbeitet werden muss"
+        },
+        {
+          "text": "Server ist down, alle 40 Mitarbeiter können nicht arbeiten.",
+          "gold": "ein Notfall, der sofort bearbeitet werden muss"
+        },
+        {
+          "text": "Wir haben einen Wasserschaden im Serverraum und brauchen sofort Hilfe.",
+          "gold": "ein Notfall, der sofort bearbeitet werden muss"
+        },
+        {
+          "text": "Bei Gelegenheit hätte ich gern eine Übersicht der Vertragslaufzeiten.",
+          "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat"
+        },
+        {
+          "text": "Kein Stress, aber irgendwann nächste Woche wäre ein Update nett.",
+          "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat"
+        },
+        {
+          "text": "Ich wollte nur mal fragen, ob es die Schulung auch als Aufzeichnung gibt.",
+          "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat"
+        },
+        {
+          "text": "Für unsere Planung im nächsten Quartal bräuchten wir irgendwann die Zahlen.",
+          "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat"
+        }
+      ]
+    },
+    {
+      "name": "cuisine_short",
+      "labels": [
+        "Italien",
+        "Japan",
+        "Mexiko",
+        "Deutschland",
+        "Indien"
+      ],
+      "templates": {
+        "variant": "Dieses Gericht stammt aus {}."
+      },
+      "cases": [
+        {
+          "text": "Spaghetti mit Tomaten, Basilikum und Parmesan, dazu ein Schuss Olivenöl.",
+          "gold": "Italien"
+        },
+        {
+          "text": "Den Pizzateig 24 Stunden gehen lassen, dann mit Mozzarella belegen.",
+          "gold": "Italien"
+        },
+        {
+          "text": "Sushi-Reis mit Reisessig würzen und mit rohem Lachs und Nori servieren.",
+          "gold": "Japan"
+        },
+        {
+          "text": "Miso-Suppe mit Dashi, Tofu und Frühlingszwiebeln.",
+          "gold": "Japan"
+        },
+        {
+          "text": "Tortillas mit schwarzen Bohnen, Guacamole und Jalapeños füllen.",
+          "gold": "Mexiko"
+        },
+        {
+          "text": "Schweinebraten mit Kartoffelknödeln und Blaukraut.",
+          "gold": "Deutschland"
+        },
+        {
+          "text": "Linsensuppe mit Mettwürstchen und einem Schuss Essig abschmecken.",
+          "gold": "Deutschland"
+        },
+        {
+          "text": "Hähnchen in Joghurt-Marinade mit Garam Masala und Kurkuma schmoren.",
+          "gold": "Indien"
+        }
+      ]
+    },
+    {
+      "name": "cuisine_descriptive",
+      "labels": [
+        "die italienische Küche",
+        "die japanische Küche",
+        "die mexikanische Küche",
+        "die deutsche Küche",
+        "die indische Küche"
+      ],
+      "templates": {
+        "variant": "Dieses Rezept gehört zu {}."
+      },
+      "cases": [
+        {
+          "text": "Spaghetti mit Tomaten, Basilikum und Parmesan, dazu ein Schuss Olivenöl.",
+          "gold": "die italienische Küche"
+        },
+        {
+          "text": "Den Pizzateig 24 Stunden gehen lassen, dann mit Mozzarella belegen.",
+          "gold": "die italienische Küche"
+        },
+        {
+          "text": "Sushi-Reis mit Reisessig würzen und mit rohem Lachs und Nori servieren.",
+          "gold": "die japanische Küche"
+        },
+        {
+          "text": "Miso-Suppe mit Dashi, Tofu und Frühlingszwiebeln.",
+          "gold": "die japanische Küche"
+        },
+        {
+          "text": "Tortillas mit schwarzen Bohnen, Guacamole und Jalapeños füllen.",
+          "gold": "die mexikanische Küche"
+        },
+        {
+          "text": "Schweinebraten mit Kartoffelknödeln und Blaukraut.",
+          "gold": "die deutsche Küche"
+        },
+        {
+          "text": "Linsensuppe mit Mettwürstchen und einem Schuss Essig abschmecken.",
+          "gold": "die deutsche Küche"
+        },
+        {
+          "text": "Hähnchen in Joghurt-Marinade mit Garam Masala und Kurkuma schmoren.",
+          "gold": "die indische Küche"
+        }
+      ]
+    },
+    {
+      "name": "moderation_short",
+      "labels": [
+        "Beleidigung",
+        "Werbung",
+        "harmloser Beitrag",
+        "Drohung"
+      ],
+      "templates": {
+        "variant": "Dieser Kommentar ist {}."
+      },
+      "cases": [
+        {
+          "text": "Du bist der dümmste Mensch, der je einen Kommentar geschrieben hat.",
+          "gold": "Beleidigung"
+        },
+        {
+          "text": "So ein Schwachkopf, hat überhaupt keine Ahnung wovon er redet.",
+          "gold": "Beleidigung"
+        },
+        {
+          "text": "Jetzt 50 Prozent Rabatt auf unsere Sonnenbrillen, Link in der Bio!",
+          "gold": "Werbung"
+        },
+        {
+          "text": "Verdiene 300 Euro am Tag von zu Hause, schreib mir einfach eine DM.",
+          "gold": "Werbung"
+        },
+        {
+          "text": "Schöner Beitrag, das sehe ich ganz genauso.",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Danke für die Erklärung, hat mir sehr geholfen.",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Weiß jemand, wann die nächste Folge erscheint?",
+          "gold": "harmloser Beitrag"
+        },
+        {
+          "text": "Ich weiß, wo du wohnst, und werde dir auflauern.",
+          "gold": "Drohung"
+        },
+        {
+          "text": "Pass bloß auf, dass dir nichts passiert, wenn du weiter so schreibst.",
+          "gold": "Drohung"
+        },
+        {
+          "text": "Wenn ich dich irgendwo sehe, wirst du das bereuen.",
+          "gold": "Drohung"
+        }
+      ]
+    },
+    {
+      "name": "moderation_descriptive",
+      "labels": [
+        "eine persönliche Beleidigung gegen eine andere Person",
+        "Werbung oder ein kommerzielles Angebot",
+        "ein harmloser, sachlicher Beitrag",
+        "eine Drohung, die jemandem Gewalt oder Schaden androht"
+      ],
+      "templates": {
+        "variant": "Dieser Kommentar ist {}."
+      },
+      "cases": [
+        {
+          "text": "Du bist der dümmste Mensch, der je einen Kommentar geschrieben hat.",
+          "gold": "eine persönliche Beleidigung gegen eine andere Person"
+        },
+        {
+          "text": "So ein Schwachkopf, hat überhaupt keine Ahnung wovon er redet.",
+          "gold": "eine persönliche Beleidigung gegen eine andere Person"
+        },
+        {
+          "text": "Jetzt 50 Prozent Rabatt auf unsere Sonnenbrillen, Link in der Bio!",
+          "gold": "Werbung oder ein kommerzielles Angebot"
+        },
+        {
+          "text": "Verdiene 300 Euro am Tag von zu Hause, schreib mir einfach eine DM.",
+          "gold": "Werbung oder ein kommerzielles Angebot"
+        },
+        {
+          "text": "Schöner Beitrag, das sehe ich ganz genauso.",
+          "gold": "ein harmloser, sachlicher Beitrag"
+        },
+        {
+          "text": "Danke für die Erklärung, hat mir sehr geholfen.",
+          "gold": "ein harmloser, sachlicher Beitrag"
+        },
+        {
+          "text": "Weiß jemand, wann die nächste Folge erscheint?",
+          "gold": "ein harmloser, sachlicher Beitrag"
+        },
+        {
+          "text": "Ich weiß, wo du wohnst, und werde dir auflauern.",
+          "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht"
+        },
+        {
+          "text": "Pass bloß auf, dass dir nichts passiert, wenn du weiter so schreibst.",
+          "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht"
+        },
+        {
+          "text": "Wenn ich dich irgendwo sehe, wirst du das bereuen.",
+          "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht"
+        }
+      ]
+    }
+  ]
+}
