@@ -4,7 +4,7 @@ from tests.conftest import AUTH
 
 LABELS = ["Technisches Problem", "Rechnung", "Feature-Wunsch", "Spam"]
 TEXT = "Mein Kassensystem druckt seit gestern keine Bons mehr"
-MODEL_ID = "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7"
+MODEL_ID = "MoritzLaurer/bge-m3-zeroshot-v2.0"
 
 
 def test_response_schema(client):

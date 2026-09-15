@@ -7,9 +7,10 @@ from dataclasses import dataclass
 from functools import lru_cache
 from typing import Tuple
 
-# Multilingual NLI model, works on German and English. Swappable via MODEL_ID,
+# Default model. Measurably more accurate *and* faster than the mDeBERTa-based
+# alternatives on German text - see docs/benchmark.md. Swappable via MODEL_ID,
 # but the chosen model has to be baked into the image at build time.
-MODEL_ID = "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7"
+MODEL_ID = "MoritzLaurer/bge-m3-zeroshot-v2.0"
 
 # The service targets German-language text, hence the German default template.
 # Override per request or via DEFAULT_HYPOTHESIS_TEMPLATE.

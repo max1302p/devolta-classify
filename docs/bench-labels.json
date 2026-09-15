@@ -1,0 +1,956 @@
+{
+ "summary": [
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 2,
+   "acc": 0.5,
+   "avg_margin": 0.216,
+   "p50_ms": 947,
+   "p95_ms": 1221
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 2,
+   "acc": 0.75,
+   "avg_margin": 0.27,
+   "p50_ms": 1138,
+   "p95_ms": 1473
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 3,
+   "acc": 0.625,
+   "avg_margin": 0.165,
+   "p50_ms": 1276,
+   "p95_ms": 1533
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 3,
+   "acc": 0.5,
+   "avg_margin": 0.344,
+   "p50_ms": 1737,
+   "p95_ms": 2187
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 2,
+   "acc": 0.75,
+   "avg_margin": 0.654,
+   "p50_ms": 1166,
+   "p95_ms": 2105
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 2,
+   "acc": 1.0,
+   "avg_margin": 0.754,
+   "p50_ms": 1225,
+   "p95_ms": 1259
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 5,
+   "acc": 0.75,
+   "avg_margin": 0.143,
+   "p50_ms": 2724,
+   "p95_ms": 3664
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "n": 8,
+   "n_labels": 5,
+   "acc": 1.0,
+   "avg_margin": 0.176,
+   "p50_ms": 2760,
+   "p95_ms": 2912
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "n": 10,
+   "n_labels": 4,
+   "acc": 0.9,
+   "avg_margin": 0.572,
+   "p50_ms": 1659,
+   "p95_ms": 1856
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "n": 10,
+   "n_labels": 4,
+   "acc": 0.7,
+   "avg_margin": 0.642,
+   "p50_ms": 2226,
+   "p95_ms": 4770
+  }
+ ],
+ "records": [
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Sehr geehrte Damen und Herren, hiermit bestätige ich den Erhalt Ihres Schreibens.",
+   "gold": "förmlich",
+   "pred": "umgangssprachlich",
+   "score": 0.5968,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Mit freundlichen Grüßen verbleibe ich, Ihr Dr. Meier.",
+   "gold": "förmlich",
+   "pred": "umgangssprachlich",
+   "score": 0.576,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Wir erlauben uns, Sie auf den noch ausstehenden Betrag hinzuweisen.",
+   "gold": "förmlich",
+   "pred": "umgangssprachlich",
+   "score": 0.7004,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Bezugnehmend auf Ihr Schreiben vom 12. März teilen wir Ihnen Folgendes mit.",
+   "gold": "förmlich",
+   "pred": "umgangssprachlich",
+   "score": 0.6156,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Hey, kannste mir das Ding mal rüberschicken?",
+   "gold": "umgangssprachlich",
+   "pred": "umgangssprachlich",
+   "score": 0.6193,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Moin, läuft bei dir? Meld dich mal.",
+   "gold": "umgangssprachlich",
+   "pred": "umgangssprachlich",
+   "score": 0.621,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Das war voll der Reinfall, ey.",
+   "gold": "umgangssprachlich",
+   "pred": "umgangssprachlich",
+   "score": 0.6033,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_short",
+   "template": "variant",
+   "text": "Jo passt schon, mach ich morgen.",
+   "gold": "umgangssprachlich",
+   "pred": "umgangssprachlich",
+   "score": 0.5314,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Sehr geehrte Damen und Herren, hiermit bestätige ich den Erhalt Ihres Schreibens.",
+   "gold": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "pred": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "score": 0.8706,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Mit freundlichen Grüßen verbleibe ich, Ihr Dr. Meier.",
+   "gold": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.6689,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Wir erlauben uns, Sie auf den noch ausstehenden Betrag hinzuweisen.",
+   "gold": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.5819,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Bezugnehmend auf Ihr Schreiben vom 12. März teilen wir Ihnen Folgendes mit.",
+   "gold": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "pred": "förmlich und sachlich, wie in einem Geschäftsbrief",
+   "score": 0.7565,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Hey, kannste mir das Ding mal rüberschicken?",
+   "gold": "locker und salopp, wie eine Nachricht unter Freunden",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.5673,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Moin, läuft bei dir? Meld dich mal.",
+   "gold": "locker und salopp, wie eine Nachricht unter Freunden",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.5293,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Das war voll der Reinfall, ey.",
+   "gold": "locker und salopp, wie eine Nachricht unter Freunden",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.5943,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "formality_descriptive",
+   "template": "variant",
+   "text": "Jo passt schon, mach ich morgen.",
+   "gold": "locker und salopp, wie eine Nachricht unter Freunden",
+   "pred": "locker und salopp, wie eine Nachricht unter Freunden",
+   "score": 0.51,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Plötzlich starke Brustschmerzen, die in den linken Arm ausstrahlen, dazu Atemnot.",
+   "gold": "Notfall",
+   "pred": "Notfall",
+   "score": 0.5148,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Die Person ist bewusstlos und atmet nicht mehr.",
+   "gold": "Notfall",
+   "pred": "Notfall",
+   "score": 0.4827,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Starke Blutung nach einem Sturz, die nicht aufhören will.",
+   "gold": "Notfall",
+   "pred": "Notfall",
+   "score": 0.3911,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Seit drei Wochen wiederkehrende Kopfschmerzen, die nicht besser werden.",
+   "gold": "Arzttermin",
+   "pred": "Selbstbehandlung",
+   "score": 0.3697,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Ein Muttermal hat sich in den letzten Monaten verändert und ist größer geworden.",
+   "gold": "Arzttermin",
+   "pred": "Selbstbehandlung",
+   "score": 0.4249,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Seit zwei Monaten Schmerzen im Knie beim Treppensteigen.",
+   "gold": "Arzttermin",
+   "pred": "Selbstbehandlung",
+   "score": 0.3733,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Leichter Schnupfen seit gestern, kein Fieber.",
+   "gold": "Selbstbehandlung",
+   "pred": "Selbstbehandlung",
+   "score": 0.5306,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_short",
+   "template": "variant",
+   "text": "Ein kleiner Mückenstich, der etwas juckt.",
+   "gold": "Selbstbehandlung",
+   "pred": "Selbstbehandlung",
+   "score": 0.5828,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Plötzlich starke Brustschmerzen, die in den linken Arm ausstrahlen, dazu Atemnot.",
+   "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.7908,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Die Person ist bewusstlos und atmet nicht mehr.",
+   "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.8021,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Starke Blutung nach einem Sturz, die nicht aufhören will.",
+   "gold": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.6399,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Seit drei Wochen wiederkehrende Kopfschmerzen, die nicht besser werden.",
+   "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.4971,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Ein Muttermal hat sich in den letzten Monaten verändert und ist größer geworden.",
+   "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.6208,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Seit zwei Monaten Schmerzen im Knie beim Treppensteigen.",
+   "gold": "Beschwerden, die in den nächsten Tagen ein Arzt abklären sollte",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.5648,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Leichter Schnupfen seit gestern, kein Fieber.",
+   "gold": "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann",
+   "pred": "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann",
+   "score": 0.3869,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "medical_descriptive",
+   "template": "variant",
+   "text": "Ein kleiner Mückenstich, der etwas juckt.",
+   "gold": "eine harmlose Kleinigkeit, die man selbst zu Hause behandeln kann",
+   "pred": "einen lebensbedrohlichen Notfall, bei dem sofort der Notruf gewählt werden muss",
+   "score": 0.4881,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Unser komplettes Kassensystem steht still, wir können seit einer Stunde nicht kassieren.",
+   "gold": "dringend",
+   "pred": "dringend",
+   "score": 0.6095,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Die Produktion steht, bitte sofort zurückrufen!",
+   "gold": "dringend",
+   "pred": "dringend",
+   "score": 0.9878,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Server ist down, alle 40 Mitarbeiter können nicht arbeiten.",
+   "gold": "dringend",
+   "pred": "nicht dringend",
+   "score": 0.6132,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Wir haben einen Wasserschaden im Serverraum und brauchen sofort Hilfe.",
+   "gold": "dringend",
+   "pred": "dringend",
+   "score": 0.9944,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Bei Gelegenheit hätte ich gern eine Übersicht der Vertragslaufzeiten.",
+   "gold": "nicht dringend",
+   "pred": "nicht dringend",
+   "score": 0.8881,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Kein Stress, aber irgendwann nächste Woche wäre ein Update nett.",
+   "gold": "nicht dringend",
+   "pred": "nicht dringend",
+   "score": 0.9901,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Ich wollte nur mal fragen, ob es die Schulung auch als Aufzeichnung gibt.",
+   "gold": "nicht dringend",
+   "pred": "nicht dringend",
+   "score": 0.9811,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_short",
+   "template": "variant",
+   "text": "Für unsere Planung im nächsten Quartal bräuchten wir irgendwann die Zahlen.",
+   "gold": "nicht dringend",
+   "pred": "dringend",
+   "score": 0.5516,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Unser komplettes Kassensystem steht still, wir können seit einer Stunde nicht kassieren.",
+   "gold": "ein Notfall, der sofort bearbeitet werden muss",
+   "pred": "ein Notfall, der sofort bearbeitet werden muss",
+   "score": 0.8344,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Die Produktion steht, bitte sofort zurückrufen!",
+   "gold": "ein Notfall, der sofort bearbeitet werden muss",
+   "pred": "ein Notfall, der sofort bearbeitet werden muss",
+   "score": 0.9389,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Server ist down, alle 40 Mitarbeiter können nicht arbeiten.",
+   "gold": "ein Notfall, der sofort bearbeitet werden muss",
+   "pred": "ein Notfall, der sofort bearbeitet werden muss",
+   "score": 0.8982,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Wir haben einen Wasserschaden im Serverraum und brauchen sofort Hilfe.",
+   "gold": "ein Notfall, der sofort bearbeitet werden muss",
+   "pred": "ein Notfall, der sofort bearbeitet werden muss",
+   "score": 0.9947,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Bei Gelegenheit hätte ich gern eine Übersicht der Vertragslaufzeiten.",
+   "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "pred": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "score": 0.8141,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Kein Stress, aber irgendwann nächste Woche wäre ein Update nett.",
+   "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "pred": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "score": 0.9792,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Ich wollte nur mal fragen, ob es die Schulung auch als Aufzeichnung gibt.",
+   "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "pred": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "score": 0.7677,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "urgency_descriptive",
+   "template": "variant",
+   "text": "Für unsere Planung im nächsten Quartal bräuchten wir irgendwann die Zahlen.",
+   "gold": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "pred": "eine Anfrage, die auch nächste Woche noch Zeit hat",
+   "score": 0.7909,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Spaghetti mit Tomaten, Basilikum und Parmesan, dazu ein Schuss Olivenöl.",
+   "gold": "Italien",
+   "pred": "Italien",
+   "score": 0.4429,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Den Pizzateig 24 Stunden gehen lassen, dann mit Mozzarella belegen.",
+   "gold": "Italien",
+   "pred": "Deutschland",
+   "score": 0.3666,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Sushi-Reis mit Reisessig würzen und mit rohem Lachs und Nori servieren.",
+   "gold": "Japan",
+   "pred": "Japan",
+   "score": 0.4525,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Miso-Suppe mit Dashi, Tofu und Frühlingszwiebeln.",
+   "gold": "Japan",
+   "pred": "Japan",
+   "score": 0.3134,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Tortillas mit schwarzen Bohnen, Guacamole und Jalapeños füllen.",
+   "gold": "Mexiko",
+   "pred": "Mexiko",
+   "score": 0.2687,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Schweinebraten mit Kartoffelknödeln und Blaukraut.",
+   "gold": "Deutschland",
+   "pred": "Deutschland",
+   "score": 0.5157,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Linsensuppe mit Mettwürstchen und einem Schuss Essig abschmecken.",
+   "gold": "Deutschland",
+   "pred": "Deutschland",
+   "score": 0.4334,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_short",
+   "template": "variant",
+   "text": "Hähnchen in Joghurt-Marinade mit Garam Masala und Kurkuma schmoren.",
+   "gold": "Indien",
+   "pred": "Japan",
+   "score": 0.268,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Spaghetti mit Tomaten, Basilikum und Parmesan, dazu ein Schuss Olivenöl.",
+   "gold": "die italienische Küche",
+   "pred": "die italienische Küche",
+   "score": 0.4677,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Den Pizzateig 24 Stunden gehen lassen, dann mit Mozzarella belegen.",
+   "gold": "die italienische Küche",
+   "pred": "die italienische Küche",
+   "score": 0.3668,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Sushi-Reis mit Reisessig würzen und mit rohem Lachs und Nori servieren.",
+   "gold": "die japanische Küche",
+   "pred": "die japanische Küche",
+   "score": 0.4818,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Miso-Suppe mit Dashi, Tofu und Frühlingszwiebeln.",
+   "gold": "die japanische Küche",
+   "pred": "die japanische Küche",
+   "score": 0.3603,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Tortillas mit schwarzen Bohnen, Guacamole und Jalapeños füllen.",
+   "gold": "die mexikanische Küche",
+   "pred": "die mexikanische Küche",
+   "score": 0.3241,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Schweinebraten mit Kartoffelknödeln und Blaukraut.",
+   "gold": "die deutsche Küche",
+   "pred": "die deutsche Küche",
+   "score": 0.4603,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Linsensuppe mit Mettwürstchen und einem Schuss Essig abschmecken.",
+   "gold": "die deutsche Küche",
+   "pred": "die deutsche Küche",
+   "score": 0.3937,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "cuisine_descriptive",
+   "template": "variant",
+   "text": "Hähnchen in Joghurt-Marinade mit Garam Masala und Kurkuma schmoren.",
+   "gold": "die indische Küche",
+   "pred": "die indische Küche",
+   "score": 0.2855,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Du bist der dümmste Mensch, der je einen Kommentar geschrieben hat.",
+   "gold": "Beleidigung",
+   "pred": "Beleidigung",
+   "score": 0.9097,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "So ein Schwachkopf, hat überhaupt keine Ahnung wovon er redet.",
+   "gold": "Beleidigung",
+   "pred": "Beleidigung",
+   "score": 0.9364,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Jetzt 50 Prozent Rabatt auf unsere Sonnenbrillen, Link in der Bio!",
+   "gold": "Werbung",
+   "pred": "Werbung",
+   "score": 0.8657,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Verdiene 300 Euro am Tag von zu Hause, schreib mir einfach eine DM.",
+   "gold": "Werbung",
+   "pred": "Werbung",
+   "score": 0.7532,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Schöner Beitrag, das sehe ich ganz genauso.",
+   "gold": "harmloser Beitrag",
+   "pred": "harmloser Beitrag",
+   "score": 0.7814,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Danke für die Erklärung, hat mir sehr geholfen.",
+   "gold": "harmloser Beitrag",
+   "pred": "harmloser Beitrag",
+   "score": 0.7807,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Weiß jemand, wann die nächste Folge erscheint?",
+   "gold": "harmloser Beitrag",
+   "pred": "harmloser Beitrag",
+   "score": 0.8054,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Ich weiß, wo du wohnst, und werde dir auflauern.",
+   "gold": "Drohung",
+   "pred": "Drohung",
+   "score": 0.4166,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Pass bloß auf, dass dir nichts passiert, wenn du weiter so schreibst.",
+   "gold": "Drohung",
+   "pred": "harmloser Beitrag",
+   "score": 0.4671,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_short",
+   "template": "variant",
+   "text": "Wenn ich dich irgendwo sehe, wirst du das bereuen.",
+   "gold": "Drohung",
+   "pred": "Drohung",
+   "score": 0.4693,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Du bist der dümmste Mensch, der je einen Kommentar geschrieben hat.",
+   "gold": "eine persönliche Beleidigung gegen eine andere Person",
+   "pred": "eine persönliche Beleidigung gegen eine andere Person",
+   "score": 0.9265,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "So ein Schwachkopf, hat überhaupt keine Ahnung wovon er redet.",
+   "gold": "eine persönliche Beleidigung gegen eine andere Person",
+   "pred": "eine persönliche Beleidigung gegen eine andere Person",
+   "score": 0.9308,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Jetzt 50 Prozent Rabatt auf unsere Sonnenbrillen, Link in der Bio!",
+   "gold": "Werbung oder ein kommerzielles Angebot",
+   "pred": "Werbung oder ein kommerzielles Angebot",
+   "score": 0.8304,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Verdiene 300 Euro am Tag von zu Hause, schreib mir einfach eine DM.",
+   "gold": "Werbung oder ein kommerzielles Angebot",
+   "pred": "Werbung oder ein kommerzielles Angebot",
+   "score": 0.8293,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Schöner Beitrag, das sehe ich ganz genauso.",
+   "gold": "ein harmloser, sachlicher Beitrag",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.4411,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Danke für die Erklärung, hat mir sehr geholfen.",
+   "gold": "ein harmloser, sachlicher Beitrag",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.8777,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Weiß jemand, wann die nächste Folge erscheint?",
+   "gold": "ein harmloser, sachlicher Beitrag",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.8224,
+   "hit": true
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Ich weiß, wo du wohnst, und werde dir auflauern.",
+   "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.6971,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Pass bloß auf, dass dir nichts passiert, wenn du weiter so schreibst.",
+   "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.7523,
+   "hit": false
+  },
+  {
+   "model": "bge-m3-zeroshot-v2.0",
+   "domain": "moderation_descriptive",
+   "template": "variant",
+   "text": "Wenn ich dich irgendwo sehe, wirst du das bereuen.",
+   "gold": "eine Drohung, die jemandem Gewalt oder Schaden androht",
+   "pred": "ein harmloser, sachlicher Beitrag",
+   "score": 0.5094,
+   "hit": false
+  }
+ ]
+}
