@@ -16,6 +16,11 @@ MODEL_ID = "MoritzLaurer/bge-m3-zeroshot-v2.0"
 # Override per request or via DEFAULT_HYPOTHESIS_TEMPLATE.
 DEFAULT_TEMPLATE = "Diese Nachricht betrifft {}."
 
+# onnx = quantisable ONNX Runtime graph (default, roughly 5x faster on CPU)
+# torch = PyTorch weights from the Hugging Face cache
+BACKENDS = ("onnx", "torch")
+DEFAULT_ONNX_DIR = "/opt/onnx"
+
 
 class ConfigError(RuntimeError):
     """Invalid or missing configuration - the service refuses to start."""
@@ -51,12 +56,18 @@ class Settings:
     default_hypothesis_template: str
     port: int
     model_id: str = MODEL_ID
+    backend: str = "onnx"
+    onnx_dir: str = DEFAULT_ONNX_DIR
 
     @classmethod
     def from_env(cls) -> "Settings":
         template = os.environ.get("DEFAULT_HYPOTHESIS_TEMPLATE") or DEFAULT_TEMPLATE
         if "{}" not in template:
             raise ConfigError("DEFAULT_HYPOTHESIS_TEMPLATE must contain '{}'.")
+
+        backend = (os.environ.get("BACKEND") or "onnx").strip().lower()
+        if backend not in BACKENDS:
+            raise ConfigError(f"BACKEND must be one of {BACKENDS}, got: {backend!r}")
 
         return cls(
             api_keys=_api_keys_from_env(),
@@ -65,6 +76,8 @@ class Settings:
             default_hypothesis_template=template,
             port=_int_env("PORT", 8000),
             model_id=(os.environ.get("MODEL_ID") or MODEL_ID).strip(),
+            backend=backend,
+            onnx_dir=(os.environ.get("ONNX_DIR") or DEFAULT_ONNX_DIR).strip(),
         )
 
 

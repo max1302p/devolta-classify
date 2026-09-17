@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import contextlib
 import logging
+import pathlib
 import time
 from dataclasses import dataclass
 from typing import Callable, ContextManager, Iterable, List, Sequence, Tuple
@@ -13,6 +14,7 @@ from .config import MODEL_ID, Settings
 logger = logging.getLogger("classify.classifier")
 
 SCORE_DIGITS = 4
+QUANTIZED_MODEL = "model_quantized.onnx"
 
 
 @dataclass(frozen=True)
@@ -60,18 +62,23 @@ class Classifier:
             pass
         self._inference_ctx = torch.inference_mode
         started = time.perf_counter()
-        self._pipe = self._build_pipeline()
+        self._pipe = self._build_pipeline(settings)
         logger.info(
             "model_loaded",
             extra={
                 "model": self.model_id,
+                "backend": settings.backend,
                 "num_threads": settings.num_threads,
                 "duration_ms": int((time.perf_counter() - started) * 1000),
             },
         )
 
-    def _build_pipeline(self) -> Callable[..., dict]:
+    def _build_pipeline(self, settings: Settings) -> Callable[..., dict]:
         from transformers import pipeline
+
+        if settings.backend == "onnx":
+            model, tokenizer = self._load_onnx(settings)
+            return pipeline("zero-shot-classification", model=model, tokenizer=tokenizer)
 
         return pipeline(
             "zero-shot-classification",
@@ -79,6 +86,36 @@ class Classifier:
             tokenizer=self.model_id,
             device=-1,  # CPU
         )
+
+    def _load_onnx(self, settings: Settings):
+        """Load the ONNX graph from ONNX_DIR, produced during the image build."""
+        import onnxruntime as ort
+        from optimum.onnxruntime import ORTModelForSequenceClassification
+        from transformers import AutoTokenizer
+
+        path = pathlib.Path(settings.onnx_dir)
+        if not path.is_dir():
+            raise FileNotFoundError(
+                f"ONNX_DIR {path} does not exist - was the image built without the "
+                "ONNX export? Set BACKEND=torch instead."
+            )
+
+        options = ort.SessionOptions()
+        options.intra_op_num_threads = settings.num_threads
+        options.inter_op_num_threads = 1
+        options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+
+        kwargs = {}
+        if (path / QUANTIZED_MODEL).is_file():
+            kwargs["file_name"] = QUANTIZED_MODEL
+
+        model = ORTModelForSequenceClassification.from_pretrained(
+            str(path),
+            session_options=options,
+            provider="CPUExecutionProvider",
+            **kwargs,
+        )
+        return model, AutoTokenizer.from_pretrained(str(path))
 
     def classify(
         self,

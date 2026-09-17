@@ -81,3 +81,38 @@ def test_env_overrides(monkeypatch):
     assert (settings.num_threads, settings.max_concurrency, settings.port) == (3, 1, 9000)
     assert settings.default_hypothesis_template == "Thema: {}"
     assert settings.model_id == "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli"
+
+
+def test_backend_defaults_to_onnx(monkeypatch):
+    monkeypatch.setenv("API_KEYS", "secret")
+    monkeypatch.delenv("BACKEND", raising=False)
+    monkeypatch.delenv("ONNX_DIR", raising=False)
+
+    settings = Settings.from_env()
+
+    assert settings.backend == "onnx"
+    assert settings.onnx_dir == "/opt/onnx"
+
+
+@pytest.mark.parametrize("value", ["torch", "ONNX", " onnx "])
+def test_backend_accepts_valid_values(monkeypatch, value):
+    monkeypatch.setenv("API_KEYS", "secret")
+    monkeypatch.setenv("BACKEND", value)
+
+    assert Settings.from_env().backend == value.strip().lower()
+
+
+@pytest.mark.parametrize("value", ["tensorflow", "cuda", "x"])
+def test_invalid_backend_prevents_start(monkeypatch, value):
+    monkeypatch.setenv("API_KEYS", "secret")
+    monkeypatch.setenv("BACKEND", value)
+
+    with pytest.raises(ConfigError, match="BACKEND"):
+        Settings.from_env()
+
+
+def test_onnx_dir_override(monkeypatch):
+    monkeypatch.setenv("API_KEYS", "secret")
+    monkeypatch.setenv("ONNX_DIR", "/models/onnx")
+
+    assert Settings.from_env().onnx_dir == "/models/onnx"

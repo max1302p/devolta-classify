@@ -91,6 +91,65 @@ Three clear wins, two clear losses. The net gain of +0.07 is three cases and
 not meaningful at this sample size. Label wording is a real lever, but one to
 measure for your own labels rather than to trust.
 
+## Runtime backend: ONNX Runtime instead of PyTorch
+
+Same model, same weights, different execution graph. Default template:
+
+| Domain | acc torch | acc onnx | p50 torch | p50 onnx | speedup |
+|---|---|---|---|---|---|
+| support_ticket | 0.917 | 0.917 | 1361 ms | 253 ms | 5.4x |
+| sentiment | 0.900 | 0.900 | 870 ms | 188 ms | 4.6x |
+| news_section | 1.000 | 1.000 | 2230 ms | 437 ms | 5.1x |
+| email_triage | 1.000 | 1.000 | 2130 ms | 421 ms | 5.1x |
+| intent_noun_labels | 1.000 | 1.000 | 1882 ms | 371 ms | 5.1x |
+| intent_verb_labels | 0.900 | 0.900 | 2219 ms | 409 ms | 5.4x |
+| urgency | 0.750 | 0.750 | 892 ms | 152 ms | 5.9x |
+| moderation | 0.800 | 0.800 | 2050 ms | 339 ms | 6.0x |
+| formality | 0.625 | 0.625 | 971 ms | 180 ms | 5.4x |
+| job_ads | 1.000 | 1.000 | 2320 ms | 417 ms | 5.6x |
+| document_type | 0.900 | 0.900 | 2442 ms | 439 ms | 5.6x |
+| review_aspect | 1.000 | 1.000 | 1446 ms | 300 ms | 4.8x |
+| english_tickets | 1.000 | 1.000 | 1436 ms | 305 ms | 4.7x |
+| cuisine | 0.625 | 0.625 | 2534 ms | 506 ms | 5.0x |
+| medical_triage | 0.375 | 0.375 | 1188 ms | 252 ms | 4.7x |
+
+**Overall 0.868 against 0.868, and 1911 ms against 339 ms at the median (5.6x).**
+Of 144 predictions, 0 changed. fp32 ONNX is numerically equivalent to fp32
+PyTorch; the speedup comes from operator fusion and a leaner runtime stack, not
+from approximation.
+
+Verified end to end: running `scripts/benchmark_http.py` against the deployed
+service returns the same 0.868 and the same 19 failing cases, case for case.
+
+### Why no int8 quantisation
+
+The obvious next step would be quantising to int8. Two measurements argued
+against it:
+
+* **ONNX int8 (dynamic):** the quantisation step needs well over 6 GB of RAM for
+  a model with 2.3 GB of external weight data, and was OOM-killed at both 4 GB
+  and 6 GB. As a build step on a shared host that is a risk which the 5.6x from
+  plain fp32 does not justify.
+* **PyTorch dynamic int8:** completed, but at 3484 ms per classification it was
+  *slower* than fp32 PyTorch (~1900 ms) and took 18 s to load. ARM CPUs lack the
+  integer instructions that make int8 pay off, so the conversion overhead
+  dominates.
+
+The build argument `ONNX_QUANTIZE=1` is still there for anyone with a
+RAM-rich build host and an x86 target with AVX-512 VNNI, where the picture may
+well look different. Default is `0`.
+
+### Memory and startup
+
+| | PyTorch | ONNX Runtime |
+|---|---|---|
+| load time at startup | 1.6 s | 5.9 s |
+| RSS steady state | 0.5 GB | 1.9 GB |
+| RSS peak while loading | 1.2 GB | 3.2 GB |
+
+PyTorch memory-maps the safetensors weights into the page cache, ONNX Runtime
+loads them into process memory. Hence the 5 GB memory limit.
+
 ## Measuring your own labels
 
 Copy `scripts/benchmark_data.json`, replace the domains with your own labels,

@@ -44,6 +44,7 @@ async def lifespan(app: FastAPI):
         "startup",
         extra={
             "model": settings.model_id,
+            "backend": settings.backend,
             "num_threads": settings.num_threads,
             "max_concurrency": settings.max_concurrency,
         },

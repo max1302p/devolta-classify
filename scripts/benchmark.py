@@ -4,6 +4,9 @@
 
 Dataset: scripts/benchmark_data.json (15 domains, 144 cases).
 Output: JSON lines on stdout plus a summary; raw records via RESULTS_OUT.
+
+A model argument is a Hub id, "quant:<hub id>" for PyTorch dynamic int8, or
+"onnx:<path>" for an ONNX export produced by scripts/export_onnx.py.
 """
 
 from __future__ import annotations
@@ -25,8 +28,39 @@ DEFAULT_MODELS = ["MoritzLaurer/bge-m3-zeroshot-v2.0"]
 
 
 def build_pipeline(spec: str, num_threads: int):
-    """Build a zero-shot pipeline for one Hub model id."""
-    return pipeline("zero-shot-classification", model=spec, tokenizer=spec, device=-1), spec
+    """Build a zero-shot pipeline for one model spec."""
+    if spec.startswith("quant:"):
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+        model_id = spec.split(":", 1)[1]
+        model = AutoModelForSequenceClassification.from_pretrained(model_id).eval()
+        quantized = torch.ao.quantization.quantize_dynamic(
+            model, {torch.nn.Linear}, dtype=torch.qint8)
+        tokenizer = AutoTokenizer.from_pretrained(model_id)
+        return pipeline("zero-shot-classification", model=quantized,
+                        tokenizer=tokenizer, device=-1), f"torch-int8-{model_id.split('/')[-1]}"
+
+    if not spec.startswith("onnx:"):
+        return pipeline("zero-shot-classification", model=spec, tokenizer=spec, device=-1), spec
+
+    import onnxruntime as ort
+    from optimum.onnxruntime import ORTModelForSequenceClassification
+    from transformers import AutoTokenizer
+
+    path = spec.split(":", 1)[1]
+    options = ort.SessionOptions()
+    options.intra_op_num_threads = num_threads
+    options.inter_op_num_threads = 1
+    options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+
+    kwargs = {}
+    if any(f.name == "model_quantized.onnx" for f in pathlib.Path(path).iterdir()):
+        kwargs["file_name"] = "model_quantized.onnx"
+    model = ORTModelForSequenceClassification.from_pretrained(
+        path, session_options=options, provider="CPUExecutionProvider", **kwargs)
+    tokenizer = AutoTokenizer.from_pretrained(path)
+    name = f"onnx-{'int8' if kwargs else 'fp32'}"
+    return pipeline("zero-shot-classification", model=model, tokenizer=tokenizer), name
 
 
 def percentile(values: list[float], pct: float) -> float:

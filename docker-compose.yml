@@ -5,6 +5,7 @@ services:
       target: runtime
       args:
         MODEL_ID: ${MODEL_ID:-MoritzLaurer/bge-m3-zeroshot-v2.0}
+        BACKEND: ${BACKEND:-onnx}
     image: classify:latest
     restart: unless-stopped
 
@@ -20,6 +21,8 @@ services:
 
       DEFAULT_HYPOTHESIS_TEMPLATE: ${DEFAULT_HYPOTHESIS_TEMPLATE:-Diese Nachricht betrifft {}.}
       MODEL_ID: ${MODEL_ID:-MoritzLaurer/bge-m3-zeroshot-v2.0}
+      # onnx = ONNX Runtime (default, ~5x faster), torch = PyTorch
+      BACKEND: ${BACKEND:-onnx}
       PORT: 8000
 
     # A reverse proxy reaches the container over the internal network.
@@ -36,7 +39,7 @@ services:
         limits:
           # Hard ceiling: the container cannot starve the host.
           cpus: "${CPU_LIMIT:-2.0}"
-          memory: ${MEMORY_LIMIT:-4g}
+          memory: ${MEMORY_LIMIT:-5g}
         reservations:
           memory: 2g
 
